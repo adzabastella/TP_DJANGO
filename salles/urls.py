@@ -9,7 +9,6 @@ Les routes attendues sont (prefixe /api/ deja fourni par config/urls.py) :
 from rest_framework.routers import DefaultRouter
 
 from .views import ReservationViewSet, SalleViewSet
-# t3
 router = DefaultRouter()
 router.register("salles", SalleViewSet)
 router.register("reservations", ReservationViewSet)
