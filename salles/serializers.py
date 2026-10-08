@@ -16,11 +16,11 @@ from .models import Reservation, Salle  # noqa: F401  (a utiliser)
 class SalleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Salle
-        fields = ["id", "nom", "capacite","batiment"]
+        fields = ["nom", "capacite","batiment"]
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = ["id", "salle", "utilisateur", "debut", "fin", "motif", "statut", "cree_le"]
+        fields = ["salle", "utilisateur", "debut", "fin", "motif", "statut", "cree_le"]
         read_only_fields = ["utilisateur", "cree_le"]
         # t2
     def validate(self, data):
