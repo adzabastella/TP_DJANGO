@@ -30,7 +30,7 @@ class ReservationSerializer(serializers.ModelSerializer):
         salle = data.get("salle", instance.salle if instance else None)
         statut = data.get("statut", instance.statut if instance else Reservation.Statut.CONFIRMEE)
         if debut and fin and fin <= debut:
-                raise serializers.ValidationError("La date de fin doit venir après la date de début.")
+                raise serializers.ValidationError("La date de fin doit venir après la date de debut.")
 
         if statut == Reservation.Statut.CONFIRMEE:
             conflit = Reservation.objects.filter(
@@ -42,5 +42,5 @@ class ReservationSerializer(serializers.ModelSerializer):
             if instance:
                 conflit = conflit.exclude(pk=instance.pk)
             if conflit.exists():
-                raise serializers.ValidationError("Cette réservation chevauche une autre réservation confirmée de la même salle.")
+                raise serializers.ValidationError("Cette reservation chevauche une autre reservation confirme de la meme salle.")
         return data
