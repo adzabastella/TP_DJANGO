@@ -39,7 +39,7 @@ class SalleViewSet(viewsets.ModelViewSet):
               fin_effective = min(i.fin, fin)
               duree_de_reservation += (fin_effective - debut_effectif).total_seconds()
           duree_totale = (fin - debut).total_seconds()
-          return Response({"le taux d'occupation est": duree_de_reservation / duree_totale })
+          return Response({"le taux d'occupation des salles est": duree_de_reservation / duree_totale })
 # t3
 class ReservationViewSet(viewsets.ModelViewSet):
     queryset = Reservation.objects.all()
